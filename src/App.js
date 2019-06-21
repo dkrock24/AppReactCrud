@@ -14,7 +14,7 @@ class App extends Component {
 
     this.state = {
       
-      newTodo:'Wash the dishes',
+      newTodo:'',
 
       editing:false,
 
@@ -177,6 +177,7 @@ class App extends Component {
               {this.state.editing ? 'Update Todo List' : 'Add Todo List'}
 
             </button>
+
             {
               this.state.loading &&
               <img src={loadingGift} alt="Loading" />
@@ -185,20 +186,19 @@ class App extends Component {
             {
               (!this.state.editing || this.state.loading )&&
             
-            <ul className="list-group" style={{color: "black"}}>
+              <ul className="list-group" style={{color: "black"}}>
 
-              {this.state.todos.map((item, index)=> {
+                {this.state.todos.map((item, index)=> {
 
-                return <ListItem
-                  key={item.id}
-                  item={item}
-                  editTodo={() => {this.editTodo(index);}}
-                  deleteTodo={() => {this.deleteTodo(index);}} />;
+                  return <ListItem
+                    key={item.id}
+                    item={item}
+                    editTodo={() => {this.editTodo(index);}}
+                    deleteTodo={() => {this.deleteTodo(index);}} />;
 
-              })}
-
-            </ul>
-          }
+                })}
+              </ul>
+            }
           </div>
          
         </header>
